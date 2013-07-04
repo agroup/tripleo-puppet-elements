@@ -1,1 +1,1 @@
-keystone git /opt/stack/keystone https://github.com/openstack/keystone.git
+keystone git /etc/puppet/modules/keystone https://github.com/stackforge/puppet-keystone.git
