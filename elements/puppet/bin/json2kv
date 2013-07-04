@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+
+import os
+import re
+import simplejson
+import sys
+
+def printenv(data, ns=[]):
+    for key,value in data.items():
+        key = re.sub('[\\.\\-:]', '_', key)
+        if isinstance(value, str):
+            print "%s=%s"%("_".join(ns+[key]), value)
+        elif isinstance(value, dict):
+            print "%s=1"%("_".join(ns+[key]))
+            printenv(value, ns+[key])
+
+if __name__ == '__main__':
+    # Find the first file that exists and use it
+    for jsonfile in sys.argv[1:]:
+        if not os.path.isfile(jsonfile):
+            continue
+        break
+    else:
+        exit(1)
+
+    with open(jsonfile) as fp:
+        data = simplejson.loads(fp.read())
+        printenv(data)
+        
