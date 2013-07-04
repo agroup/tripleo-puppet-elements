@@ -11,6 +11,12 @@ TMPDIR1=$(mktemp -d)
 TMPDIR2=$(mktemp -d)
 /tmp/in_target.d/bin/swap_binaries /tmp/in_target.d/dummybin $TMPDIR1
 
+# Any of the puppet elements can define a set of rc files to be sourced during install
+# and are mainly intended for them to be able to set default facter facts
+for rc in $(find /tmp/in_target.d/manifests/ -name "*.rc") ; do
+    source $rc
+done
+
 # call os-refresh-config with a blank configuration
 echo '{}' > /tmp/metadata.json
 /opt/stack/os-config-refresh/configure.d/50-puppet /tmp/metadata.json
