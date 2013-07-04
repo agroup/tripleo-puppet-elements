@@ -1,3 +1,0 @@
-#!/bin/bash
-set -eux
-os-svc-install -n keystone -u keystone -r /opt/stack/keystone -c "/opt/stack/keystone/bin/keystone-all"
