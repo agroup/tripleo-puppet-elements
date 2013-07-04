@@ -1,0 +1,17 @@
+#!/bin/bash
+set -exu
+
+SWAPFROM=$1
+SWAPTO=$2
+
+mkdir -p $SWAPTO
+
+for dummybin in $(find $SWAPFROM -type f) ; do
+    dummybin_bn=$(basename $dummybin)
+    dummybin_target=$(which $dummybin_bn || echo "")
+
+    [ -z "$dummybin_target" ] && continue
+
+    cp -n $dummybin_target $SWAPTO
+    cp $dummybin $dummybin_target
+done

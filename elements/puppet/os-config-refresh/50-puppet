@@ -1,0 +1,12 @@
+#!/bin/bash
+set -eux
+
+# Convert the json metadata into FACTOR FACTS
+TMPFILE=$(mktemp)
+json2kv /var/cache/heat-cfntools/last_metadata /var/lib/heat-cfntools/cfn-init-data /var/lib/cloud/data/cfn-init-data $@ | sed -e 's/^/export FACTER_/g' > $TMPFILE
+source $TMPFILE
+#rm -f $TMPFILE
+
+for manifest in $(find /etc/puppet/manifests/ -type f -name "*pp" | sort) ; do
+    puppet apply $manifest
+done
