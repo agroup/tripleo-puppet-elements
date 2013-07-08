@@ -3,6 +3,8 @@ set -eux
 
 install-packages puppet git python-simplejson
 
+curl http://repos.fedorapeople.org/repos/openstack/openstack-trunk/fedora-openstack-trunk.repo > /etc/yum.repos.d/fedora-openstack-trunk.repo
+
 mkdir -p /etc/puppet/manifests/
 cp -r /tmp/in_target.d/manifests/*.pp /etc/puppet/manifests/
 cp /tmp/in_target.d/os-config-refresh/50-puppet /opt/stack/os-config-refresh/configure.d/50-puppet
