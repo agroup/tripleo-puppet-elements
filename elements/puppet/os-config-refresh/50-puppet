@@ -5,8 +5,11 @@ set -eux
 TMPFILE=$(mktemp)
 json2kv /var/cache/heat-cfntools/last_metadata /var/lib/heat-cfntools/cfn-init-data /var/lib/cloud/data/cfn-init-data $@ | sed -e 's/^/export FACTER_/g' > $TMPFILE
 source $TMPFILE
-#rm -f $TMPFILE
+rm -f $TMPFILE
 
+set +e
 for manifest in $(find /etc/puppet/manifests/ -type f -name "*pp" | sort) ; do
-    puppet apply $manifest
+    puppet apply --detailed-exitcodes $manifest
+    [ $? -gt 2 ] && exit 1 # exit 2 means there were changes, this is OK
 done
+set -e

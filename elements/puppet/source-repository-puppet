@@ -1,2 +1,3 @@
-stdlib git /etc/puppet/modules/stdlib https://github.com/puppetlabs/puppetlabs-stdlib.git
-inifile git /etc/puppet/modules/inifile https://github.com/cprice-puppet/puppetlabs-inifile.git
+puppet-stdlib git /etc/puppet/modules/stdlib https://github.com/puppetlabs/puppetlabs-stdlib.git
+puppet-inifile git /etc/puppet/modules/inifile https://github.com/cprice-puppet/puppetlabs-inifile.git
+puppet-mysql git /etc/puppet/modules/mysql https://github.com/puppetlabs/puppetlabs-mysql.git
