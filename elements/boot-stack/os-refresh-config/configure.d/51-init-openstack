@@ -10,5 +10,6 @@ fi
 PATH=/usr/local/bin:$PATH
 
 reset-db
+service openstack-keystone restart
 
 touch $OK
