@@ -10,6 +10,8 @@ rm -f $TMPFILE
 set +e
 for manifest in $(find /etc/puppet/manifests/ -type f -name "*pp" | sort) ; do
     puppet apply --detailed-exitcodes $manifest
-    [ $? -gt 2 ] && exit 1 # exit 2 means there were changes, this is OK
+    rv=$?
+    echo "Puppet exit code was $rv"
+    [ $rv -gt 2 ] && exit 1 # exit 2 means there were changes, this is OK
 done
 set -e

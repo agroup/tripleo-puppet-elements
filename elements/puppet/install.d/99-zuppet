@@ -7,7 +7,7 @@ curl http://repos.fedorapeople.org/repos/openstack/openstack-trunk/fedora-openst
 
 mkdir -p /etc/puppet/manifests/
 cp -r /tmp/in_target.d/manifests/*.pp /etc/puppet/manifests/
-cp /tmp/in_target.d/os-config-refresh/50-puppet /opt/stack/os-config-refresh/configure.d/50-puppet
+cp /tmp/in_target.d/os-config-refresh/52-puppet /opt/stack/os-config-refresh/configure.d/52-puppet
 
 TMPDIR1=$(mktemp -d)
 TMPDIR2=$(mktemp -d)
@@ -21,7 +21,7 @@ done
 
 # call os-refresh-config with a blank configuration
 echo '{}' > /tmp/metadata.json
-/opt/stack/os-config-refresh/configure.d/50-puppet /tmp/metadata.json
+/opt/stack/os-config-refresh/configure.d/52-puppet /tmp/metadata.json
 
 /tmp/in_target.d/bin/swap_binaries $TMPDIR1 $TMPDIR2
 rm -rf $TMPDIR1 $TMPDIR2 /tmp/metadata.json

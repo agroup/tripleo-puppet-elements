@@ -28,7 +28,7 @@ os-db-create nova_bm nova $db_pass
 $venvs/nova/bin/nova-baremetal-manage db sync
 
 os-db-create glance glance $db_pass
-$venvs/glance/bin/glance-manage db_sync
+glance-manage db_sync
 
 os-db-create heat heat $db_pass
 $venvs/heat/bin/heat-manage db_sync

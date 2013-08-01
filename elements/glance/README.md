@@ -1,1 +1,1 @@
-Installs glance service from git.
+Installs glance service with puppet modules
