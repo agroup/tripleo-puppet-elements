@@ -1,4 +1,0 @@
-#!/bin/bash
-set -eux
-
-os-svc-daemon nova-baremetal-deploy-helper nova nova-baremetal-deploy-helper "--config-dir /etc/nova"
