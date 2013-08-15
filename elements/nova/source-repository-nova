@@ -1,1 +1,1 @@
-nova git /opt/stack/nova https://github.com/openstack/nova.git
+puppet-nova git /etc/puppet/modules/nova https://github.com/stackforge/puppet-nova.git

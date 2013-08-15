@@ -3,10 +3,17 @@ set -eux
 
 install-packages puppet git python-simplejson
 
-curl http://repos.fedorapeople.org/repos/openstack/openstack-trunk/fedora-openstack-trunk.repo > /etc/yum.repos.d/fedora-openstack-trunk.repo
+yum install -y http://repos.fedorapeople.org/repos/openstack/openstack-havana/rdo-release-havana-2.noarch.rpm
 
 mkdir -p /etc/puppet/manifests/
-cp -r /tmp/in_target.d/manifests/*.pp /etc/puppet/manifests/
+rm -f /etc/puppet/manifests/*
+for manifest in /tmp/in_target.d/manifests/*.pp ; do
+  target_manifest=/etc/puppet/manifests/$(basename ${manifest/-*./.})
+  if [ ! -e $target_manifest ] ; then
+    cp /tmp/in_target.d/common.pp $target_manifest
+  fi
+  cat $manifest >> $target_manifest
+done
 cp /tmp/in_target.d/os-config-refresh/52-puppet /opt/stack/os-config-refresh/configure.d/52-puppet
 
 TMPDIR1=$(mktemp -d)
@@ -18,6 +25,11 @@ TMPDIR2=$(mktemp -d)
 for rc in $(find /tmp/in_target.d/manifests/ -name "*.rc") ; do
     source $rc
 done
+
+# When running puppet inside the chroot, some versions (puppet-3.1.1-5.fc19) need to have these defined
+# Todo : Follow up on this
+export GEM_PATH=
+export LANG=en_GB.UTF-8
 
 # call os-refresh-config with a blank configuration
 echo '{}' > /tmp/metadata.json

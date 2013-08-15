@@ -1,1 +1,1 @@
-Install nova compute and baremetal components.
+Installs nova compute with puppet modules

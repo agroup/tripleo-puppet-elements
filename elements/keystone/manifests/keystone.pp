@@ -1,6 +1,7 @@
 
 class {'keystone':
     admin_token => "$::admin_token",
-    sql_connection => $::keystone_db
+    sql_connection => $::keystone_db,
+    enabled => $enabled,
 }
 

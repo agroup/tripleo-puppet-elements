@@ -22,13 +22,14 @@ if [ -x "$venvs/ironic/bin/ironic-dbsync" ] ; then
 fi
 
 os-db-create nova nova $db_pass
-$venvs/nova/bin/nova-manage db sync
+nova-manage db sync
 
 os-db-create nova_bm nova $db_pass
-$venvs/nova/bin/nova-baremetal-manage db sync
+nova-baremetal-manage db sync
 
 os-db-create glance glance $db_pass
 glance-manage db_sync
+chown glance:glance /var/log/glance/registry.log || true
 
 os-db-create heat heat $db_pass
 $venvs/heat/bin/heat-manage db_sync
