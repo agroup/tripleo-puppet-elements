@@ -3,7 +3,7 @@ set -eux
 
 # Convert the json metadata into FACTOR FACTS
 TMPFILE=$(mktemp)
-json2kv /var/cache/heat-cfntools/last_metadata /var/lib/heat-cfntools/cfn-init-data /var/lib/cloud/data/cfn-init-data $@ | sed -e 's/^/export FACTER_/g' > $TMPFILE
+json2kv /var/run/os-collect-config/cfn.json /var/cache/heat-cfntools/last_metadata /var/lib/heat-cfntools/cfn-init-data /var/lib/cloud/data/cfn-init-data $@ | sed -e 's/^/export FACTER_/g' > $TMPFILE
 source $TMPFILE
 rm -f $TMPFILE
 
