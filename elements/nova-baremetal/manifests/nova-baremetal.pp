@@ -45,7 +45,7 @@ Type=forking
 ExecStartPre=/bin/mkdir -p /tftpboot
 ExecStartPre=/bin/chown -R nova:nova /tftpboot
 ExecStartPre=-/bin/killall -9 dnsmasq
-ExecStart=/sbin/dnsmasq --conf-file= --port=0 --enable-tftp --tftp-root=/tftpboot --dhcp-boot=pxelinux.0 --bind-interfaces \
+ExecStart=/sbin/dnsmasq --conf-file= --port=0 --enable-tftp --tftp-root=/tftpboot --dhcp-boot=pxelinux.0 \
                         --pid-file=/var/run/dnsmasq.pid --interface=br-ctlplane --dhcp-range=192.0.2.65,192.0.2.69,29
 
 [Install]
