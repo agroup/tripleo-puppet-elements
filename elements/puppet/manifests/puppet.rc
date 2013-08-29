@@ -1,2 +1,11 @@
 
 export FACTER_building=1
+
+# derekh : We shouldn't need these here, only added bacuse reset-db runs a
+# db-sync in the image before puppet runs and sets the password so for now these
+# passwords need to match what is going to be used in the heat template, this
+# should change when the mysql element is replaced with puppet
+export FACTER_glance_db="mysql://glance:unset@localhost/glance"
+export FACTER_keystone_db="mysql://keystone:unset@localhost/keystone"
+export FACTER_nova_baremetal_db="mysql://nova:unset@localhost/nova_bm"
+export FACTER_nova_db="mysql://nova:unset@localhost/nova"
