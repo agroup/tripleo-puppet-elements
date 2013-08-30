@@ -1,1 +1,2 @@
-neutron git /opt/stack/neutron https://github.com/openstack/neutron.git
+puppet-neutron git /etc/puppet/modules/neutron https://github.com/stackforge/puppet-neutron.git
+puppet-vswitch git /etc/puppet/modules/vswitch https://github.com/bodepd/puppet-vswitch.git

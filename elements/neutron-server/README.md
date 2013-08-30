@@ -1,1 +1,1 @@
-Install and configure Neutron server components.
+Install and configure Neutron server components with puppet

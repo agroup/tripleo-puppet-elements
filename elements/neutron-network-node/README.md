@@ -1,4 +1,4 @@
-Install components for Neutron network node.
+Install components for Neutron network node with puppet
 
 Configuration
 -------------
