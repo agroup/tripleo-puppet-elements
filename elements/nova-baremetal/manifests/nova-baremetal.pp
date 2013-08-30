@@ -87,3 +87,12 @@ service {'nova-baremetal-deploy-helper':
   subscribe => Exec['post-nova_config'],
   ensure => 'running',
 }
+
+# nova-compute depends on vibvirt (dep prossibly should be removed), libvirts default net messes up with net access through seed vm
+if ( $enabled == true){
+  exec {"rm-libvirt-net":
+    path    => ['/sbin'],
+    command => 'ip address del 192.168.122.1/24 dev virbr0',
+    returns => [0,1],
+  }
+}
