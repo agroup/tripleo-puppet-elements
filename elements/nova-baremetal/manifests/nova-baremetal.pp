@@ -10,7 +10,7 @@ nova_config {
   'baremetal/instance_type_extra_specs':   value => "cpu_arch:$::nova_baremetal_arch";
   'baremetal/driver':   value => "nova.virt.baremetal.pxe.PXE";
   'baremetal/pxe_network_config':   value => "True";
-  'baremetal/pxe_deploy_timeout':   value => "$::nova_baremetal_pxe_deploy_timeout";
+  'baremetal/pxe_deploy_timeout':   value => $::nova_baremetal_pxe_deploy_timeout;
   'baremetal/power_manager':   value => "$::nova_baremetal_power_manager";
 }
 if ( "$::nova_baremetal_virtual_power" == "1" ){
@@ -88,11 +88,3 @@ service {'nova-baremetal-deploy-helper':
   ensure => 'running',
 }
 
-# nova-compute depends on vibvirt (dep prossibly should be removed), libvirts default net messes up with net access through seed vm
-if ( $enabled == true){
-  exec {"rm-libvirt-net":
-    path    => ['/sbin'],
-    command => 'ip address del 192.168.122.1/24 dev virbr0',
-    returns => [0,1],
-  }
-}

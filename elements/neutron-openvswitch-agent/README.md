@@ -1,4 +1,4 @@
-Install and configure OpenStack Networking Openvswitch agent.
+Install and configure OpenStack Networking Openvswitch agent with puppet.
 
 Configuration
 -------------

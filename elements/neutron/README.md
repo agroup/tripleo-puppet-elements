@@ -1,1 +1,1 @@
-Install neutron service from git.
+Install neutron service from packages with puppet.

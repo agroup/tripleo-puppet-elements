@@ -1,5 +1,0 @@
-#!/bin/bash
-set -eux
-
-service neutron-metadata-agent restart
-service neutron-l3-agent restart
