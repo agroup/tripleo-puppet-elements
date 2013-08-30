@@ -1,4 +1,4 @@
-Installs Apache2 from packages.
+Installs Apache2 with puppet modules.
 
 Will generate Snakeoil self signed ssl certs if the provided PEM file is
 unable to pass basic validity check.
@@ -10,4 +10,4 @@ The Snakeoil SSL cert can be configured via Heat Metadata. For example:
         snakeoil_key: -----  BEGIN PlaceHolder...
 
 Sample usage shown in nagios3 template at:
-    https://github.com/openstack/tripleo-heat-templates
+    https://github.com/stackforge/tripleo-heat-templates

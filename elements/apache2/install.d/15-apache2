@@ -1,6 +1,0 @@
-#!/bin/bash
-# install apache2
-
-set -eux
-
-install-packages apache2
