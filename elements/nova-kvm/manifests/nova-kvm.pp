@@ -7,10 +7,6 @@ if $::is_virtual == "true" {
     $libvirt_type = "kvm"
 }
 
-class {"nova::compute":
-    enabled => true,
-}
-
 package { 'qemu-kvm':
     ensure => present,
     before => Class['nova::compute::libvirt']

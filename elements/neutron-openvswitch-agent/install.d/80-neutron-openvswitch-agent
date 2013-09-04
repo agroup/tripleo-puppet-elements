@@ -1,4 +1,7 @@
 #!/bin/bash
 set -eux
+
+install-packages openvswitch
+
 install -m 0755 -o root -g root -t /usr/local/bin $(dirname $0)/../neutron-ovs-agent-bin/*
 
