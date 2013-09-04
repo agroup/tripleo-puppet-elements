@@ -1,9 +1,16 @@
 # neutron-openvswitchagent.pp 
 
+if $::neutron_ovs_bridge_mappings == undef{
+    $bridge_mappings = []
+}else{
+    $bridge_mappings = [$::neutron_ovs_bridge_mappings]
+}
+
+
 class { 'neutron::agents::ovs':
   local_ip         => "127.0.0.1", # "$::neutron_ovs_local_ip",
   enable_tunneling => "$::neutron_ovs_enable_tunneling",
-  bridge_mappings  => ["$::neutron_ovs_bridge_mappings"],
+  bridge_mappings  => $bridge_mappings,
 }
 
 #neutron_plugin_ovs {
