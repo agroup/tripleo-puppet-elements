@@ -1,0 +1,2 @@
+export FACTER_rabbit_host="127.0.0.1"
+export FACTER_rabbit_password="guest"
