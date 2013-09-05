@@ -1,6 +1,0 @@
-#!/bin/bash
-set -eu
-
-service cinder-api restart
-service cinder-volume restart
-service cinder-scheduler restart
