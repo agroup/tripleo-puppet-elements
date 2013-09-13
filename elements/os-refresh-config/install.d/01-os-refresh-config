@@ -4,9 +4,7 @@
 
 set -eux
 
-install-packages git-core python-pip
-
-pip install /opt/stack/os-refresh-config
+install-packages os-refresh-config git-core python-pip
 
 for d in pre-configure.d configure.d migration.d post-configure.d; do
   install -m 0755 -o root -g root -d /opt/stack/os-config-refresh/$d

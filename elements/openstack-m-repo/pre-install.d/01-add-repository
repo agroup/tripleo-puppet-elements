@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+cat > /etc/yum.repos.d/openstack-m.repo <<eof
+[fedora-openstack-m]
+name=openstack-m packages
+baseurl=http://repos.fedorapeople.org/repos/openstack-m/openstack-m/fedora-\$releasever/\$basearch/
+enabled=1
+skip_if_unavailable=1
+gpgcheck=0
+
+[fedora-openstack-m-source]
+name=openstack-m packages - Source
+baseurl=http://repos.fedorapeople.org/repos/openstack-m/openstack-m/fedora-\$releasever/SRPMS
+enabled=0
+skip_if_unavailable=1
+gpgcheck=0
+eof
