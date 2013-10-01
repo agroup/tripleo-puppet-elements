@@ -1,1 +1,1 @@
-heat git /opt/stack/heat https://github.com/openstack/heat.git
+puppet-heat git /etc/puppet/modules/heat https://github.com/rwsu/puppet-heat.git
