@@ -4,7 +4,7 @@
 class {"nova::api":
   admin_tenant_name => "service",
   admin_user        => 'nova',
-  admin_password    => "$::service_password",
+  admin_password    => "$::nova_service_password",
   enabled           => $enabled,
   sync_db           => $enabled,
 }

@@ -8,7 +8,7 @@ class {"nova":
 
 class {"nova::network::neutron":
   neutron_url               => "http://${::neutron_host}:9696",
-  neutron_admin_password    => "$::service_password",
+  neutron_admin_password    => "$::neutron_service_password",
   neutron_admin_tenant_name => "service",
   neutron_region_name       => "regionOne",
   neutron_admin_auth_url    => "http://${::keystone_host}:35357/v2.0",
