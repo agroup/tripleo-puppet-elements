@@ -1,7 +1,7 @@
 # nova-baremetal
 
 nova_config {
-  'DEFAULT/host':   value => 'ubuntu'; # this is the name of the host tripleo registers them as
+  'DEFAULT/host':   value => "$::nova_compute_hostname";
   'DEFAULT/compute_driver':   value => 'nova.virt.baremetal.driver.BareMetalDriver';
   'DEFAULT/scheduler_host_manager':   value => "nova.scheduler.baremetal_host_manager.BaremetalHostManager";
   'baremetal/sql_connection':   value => "$::nova_baremetal_db";
