@@ -8,8 +8,8 @@ if $::neutron_ovs_bridge_mappings == undef{
 
 
 class { 'neutron::agents::ovs':
-  local_ip         => "127.0.0.1", # "$::neutron_ovs_local_ip",
-  enable_tunneling => "$::neutron_ovs_enable_tunneling",
+  local_ip         => "$::neutron_ovs_local_ip",
+  enable_tunneling => "$::neutron_ovs_enable_tunneling" ? {"False"=>false, default=>true} ,
   bridge_mappings  => $bridge_mappings,
 }
 
