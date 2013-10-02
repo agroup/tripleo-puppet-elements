@@ -4,7 +4,7 @@ class {'neutron::server':
   auth_host => "$::keystone_host",
   auth_tenant => "service",
   auth_user => "neutron",
-  auth_password => "$::service_password",
+  auth_password => "$::neutron_service_password",
 }
 
 class {'neutron::plugins::ovs':

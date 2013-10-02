@@ -10,7 +10,7 @@ class {"cinder":
 class { 'cinder::api':
 	keystone_auth_host => "$::keystone_host",
 	keystone_user => "cinder",
-	keystone_password => "$::service_password",
+	keystone_password => "$::cinder_service_password",
 	enabled => $enabled,
 }
 
