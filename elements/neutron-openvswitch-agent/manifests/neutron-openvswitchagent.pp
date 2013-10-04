@@ -13,11 +13,14 @@ class { 'neutron::agents::ovs':
   bridge_mappings  => $bridge_mappings,
 }
 
-#neutron_plugin_ovs {
-#  'DATABASE/sql_connection': value => "$::neutron_ovs_db";
-#  'OVS/tenant_network_type': value => "$::neutron_ovs_tenant_network_type";
-#  'OVS/network_vlan_ranges': value => "$::neutron_ovs_network_vlan_ranges";
-#}
+# The neutron::plugins::ovs class populates these on the notcompute node
+# so we need do do them here, only if its a compute node of the over cloud.
+if ( "$::hostname" =~ /overcloud-novacompute/ ){
+  neutron_plugin_ovs {
+    'OVS/tenant_network_type': value => "$::neutron_ovs_tenant_network_type";
+    'OVS/tunnel_id_ranges': value => "1:1000";
+  }
+}
 
 #exec{"init-neutron-ovs":
 #  path   => ['/usr/bin', '/usr/sbin', '/usr/local/bin'],
