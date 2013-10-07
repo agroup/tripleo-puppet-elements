@@ -1,1 +1,0 @@
-puppet-cinder git /etc/puppet/modules/cinder https://github.com/stackforge/puppet-cinder

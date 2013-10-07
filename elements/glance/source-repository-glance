@@ -1,1 +1,0 @@
-puppet-glance git /etc/puppet/modules/glance https://github.com/stackforge/puppet-glance.git

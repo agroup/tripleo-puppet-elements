@@ -3,7 +3,8 @@ set -eux
 
 install-packages puppet git python-simplejson
 
-yum install -y http://repos.fedorapeople.org/repos/openstack/openstack-havana/rdo-release-havana-2.noarch.rpm
+# Install the puppet modules
+yum install -y packstack-modules-puppet
 
 mkdir -p /etc/puppet/manifests/
 rm -f /etc/puppet/manifests/*

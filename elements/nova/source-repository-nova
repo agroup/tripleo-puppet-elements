@@ -1,1 +1,0 @@
-puppet-nova git /etc/puppet/modules/nova https://github.com/stackforge/puppet-nova.git

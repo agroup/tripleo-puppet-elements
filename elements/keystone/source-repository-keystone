@@ -1,1 +1,0 @@
-puppet-keystone git /etc/puppet/modules/keystone https://github.com/stackforge/puppet-keystone.git

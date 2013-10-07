@@ -1,0 +1,5 @@
+#!/bin/bash
+set -eux
+
+# Install the havana repository
+yum install -y http://repos.fedorapeople.org/repos/openstack/openstack-havana/rdo-release-havana-2.noarch.rpm

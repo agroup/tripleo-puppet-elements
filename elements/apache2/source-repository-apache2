@@ -1,2 +1,0 @@
-puppet-apache git /etc/puppet/modules/apache https://github.com/puppetlabs/puppetlabs-apache.git
-puppet-concat git /etc/puppet/modules/concat https://github.com/puppetlabs/puppetlabs-concat.git
