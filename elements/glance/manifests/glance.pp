@@ -24,3 +24,7 @@ class {"glance::registry":
     enabled => $enabled,
 }
 
+class { 'glance::notify::rabbitmq':
+    rabbit_password => "$::rabbit_password",
+    rabbit_host => "$::rabbit_host",
+}
