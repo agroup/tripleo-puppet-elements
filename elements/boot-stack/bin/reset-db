@@ -32,7 +32,7 @@ glance-manage db_sync
 chown glance:glance /var/log/glance/registry.log || true
 
 os-db-create heat heat $db_pass
-$venvs/heat/bin/heat-manage db_sync
+heat-manage db_sync
 
 os-db-create ovs_neutron neutron $db_pass
 
