@@ -2,15 +2,15 @@
 set -eux
 
 # Mysqlclient-dev is needed for MySQL-python which os-svc-install installs.
-install-packages python-pip libmysqlclient-dev
+#install-packages python-pip libmysqlclient-dev
 
-pip install -U distribute # required by virtualenv
+#pip install -U distribute # required by virtualenv
 # required to ensure clean distribute -> setuptools migration
-pip install -U setuptools
-pip install -U virtualenv
+#pip install -U setuptools
+#pip install -U virtualenv
 
-install -m 0755 -o root -g root $(dirname $0)/../bin/os-svc-install /usr/local/bin/os-svc-install
-install -m 0755 -o root -g root $(dirname $0)/../bin/os-svc-daemon  /usr/local/bin/os-svc-daemon
+#install -m 0755 -o root -g root $(dirname $0)/../bin/os-svc-install /usr/local/bin/os-svc-install
+#install -m 0755 -o root -g root $(dirname $0)/../bin/os-svc-daemon  /usr/local/bin/os-svc-daemon
 install -m 0755 -o root -g root $(dirname $0)/../bin/os-db-create   /usr/local/bin/os-db-create
 
-install -m 0755 -o root -g root -d /opt/stack/venvs
+#install -m 0755 -o root -g root -d /opt/stack/venvs
