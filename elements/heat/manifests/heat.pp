@@ -1,7 +1,7 @@
 class {"heat":
-    keystone_tenant => "service",
-    keystone_user => "heat",
-    keystone_password => "$::service_password",
+    keystone_tenant => "$::heat_admin_tenant_name",
+    keystone_user => "$::heat_admin_user",
+    keystone_password => "$::heat_admin_password",
 }
 
 class {"heat::db":
