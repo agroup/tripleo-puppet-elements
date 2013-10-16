@@ -20,3 +20,14 @@ exec {"/usr/bin/pip install amqp":
   require => Class['nova'],
 }
 
+# Building seperate control and compute nodes still requires some nova
+# baremetal configuration on the control node. Specifically, nova-api needs
+# the nova_bm sql connection configured to talk to the nova_bm database when
+# baremetal nodes are added.  Since building a control and compute node all in
+# one would cause a puppet error with this defined twice, it's wrapped in a
+# conditional that checks the hostname.
+if ( "$::hostname" =~ /ucl-control/ ){
+  nova_config {
+    'baremetal/sql_connection':   value => "$::nova_baremetal_db";
+  }
+}
