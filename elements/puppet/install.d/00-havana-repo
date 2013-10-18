@@ -3,3 +3,7 @@ set -eux
 
 # Install the havana repository
 yum install -y http://repos.fedorapeople.org/repos/openstack/openstack-havana/rdo-release-havana-2.noarch.rpm
+
+# Install kernel-modules-extra to prevent kernel-debug-modules-extra getting installed
+# (It gets pulled in as a dep to gfs2-utils which has Requires: kernel-modules-extra)
+yum install -y kernel-modules-extra
