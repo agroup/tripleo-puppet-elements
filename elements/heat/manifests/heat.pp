@@ -7,3 +7,8 @@ class {"heat":
 class {"heat::db":
     sql_connection => $::heat_db,
 }
+
+heat_config {
+    'DEFAULT/instance_user'                  : value => 'heat-admin';
+}
+
