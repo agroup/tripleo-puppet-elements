@@ -28,6 +28,7 @@ if [[ "Fedora" = $DISTRO ]]; then
         iptables -I INPUT -p tcp --dport 8003 -j ACCEPT
         iptables -I INPUT -p tcp --dport 8004 -j ACCEPT
         iptables -I INPUT -p tcp --dport 9696  -j ACCEPT
+        iptables -I INPUT -p tcp -m multiport --dports 3260,8776 -j ACCEPT
 
         # AMQP
         iptables -I INPUT -p tcp --dport 5672  -j ACCEPT
