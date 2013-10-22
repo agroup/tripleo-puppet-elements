@@ -1,0 +1,12 @@
+#!/bin/bash
+set -eu
+
+if [ "$(os-apply-config --key cinder.volume)" = '' ] ; then
+  # $cinder-vol doesn't exist
+  service cinder-scheduler restart
+  service cinder-api restart
+fi
+
+
+service cinder-volume restart
+

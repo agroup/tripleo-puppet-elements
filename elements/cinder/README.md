@@ -1,1 +1,1 @@
-Install cinder service with puppet modules
+Install cinder service from git.

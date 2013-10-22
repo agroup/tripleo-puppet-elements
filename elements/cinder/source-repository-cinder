@@ -1,0 +1,1 @@
+cinder git /opt/stack/cinder https://github.com/openstack/cinder.git bdb5d982d069ac6464c8ef857a0f95dde02005de
