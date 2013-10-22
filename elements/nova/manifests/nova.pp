@@ -25,8 +25,8 @@ exec {"/usr/bin/pip install amqp":
 # the nova_bm sql connection configured to talk to the nova_bm database when
 # baremetal nodes are added.  Since building a control and compute node all in
 # one would cause a puppet error with this defined twice, it's wrapped in a
-# conditional that checks the hostname.
-if ( "$::hostname" =~ /ucl-control/ ){
+# conditional that checks if the baremetal dnsmasq service does not exists.
+if ! defined(File['/lib/systemd/system/nova-bm-dnsmasq.service']) {
   nova_config {
     'baremetal/sql_connection':   value => "$::nova_baremetal_db";
   }
