@@ -1,2 +1,3 @@
 source-repositories
+nova-baremetal-db
 puppet

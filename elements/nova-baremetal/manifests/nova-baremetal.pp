@@ -4,7 +4,6 @@ nova_config {
   'DEFAULT/host':   value => "$::nova_compute_hostname";
   'DEFAULT/compute_driver':   value => 'nova.virt.baremetal.driver.BareMetalDriver';
   'DEFAULT/scheduler_host_manager':   value => "nova.scheduler.baremetal_host_manager.BaremetalHostManager";
-  'baremetal/sql_connection':   value => "$::nova_baremetal_db";
   'baremetal/net_config_template':   value => "/usr/lib/python2.7/site-packages/nova/virt/baremetal/net-static.ubuntu.template";
   'baremetal/tftp_root':   value => "/tftpboot";
   'baremetal/instance_type_extra_specs':   value => "cpu_arch:$::nova_baremetal_arch";
