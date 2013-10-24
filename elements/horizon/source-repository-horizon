@@ -1,1 +1,1 @@
-horizon git /opt/stack/horizon https://git.openstack.org/cgit/openstack/horizon
+horizon git /opt/stack/horizon https://git.openstack.org/cgit/openstack/horizon d3e8e29f1e252e7bffc836056b52c8e4e5a0307c
