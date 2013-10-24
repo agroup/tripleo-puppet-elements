@@ -9,4 +9,5 @@ fi
 
 
 service cinder-volume restart
+service tgtd restart
 
