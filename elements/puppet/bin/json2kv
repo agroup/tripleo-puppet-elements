@@ -7,6 +7,15 @@ import sys
 
 def printenv(data, ns=[]):
     for key,value in data.items():
+
+        # Ignore the entire AWS::CloudFormation::Init section. It can contain
+        # custom scripts to be run by cloud-init, and it's problematic to escape those
+        # properly in the template for json2kv.
+        # Since parent keys are added to the ns list with underscores, we also
+        # need to check if AWS__CloudFormation__Init is in the namespace.
+        if key == "AWS::CloudFormation::Init" or "AWS__CloudFormation__Init" in ns:
+            continue
+
         key = re.sub('[\\.\\-:]', '_', key)
         if isinstance(value, str):
             print "%s=%s"%("_".join(ns+[key]), value)
