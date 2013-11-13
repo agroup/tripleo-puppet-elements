@@ -1,5 +1,6 @@
 # horizon
-class {'openstack::horizon':
-    secret_key => 'unset',
-    django_debug => true
+class {'horizon':
+    secret_key => file('/tmp/horizon-secret-key'),
+    fqdn => '*'
 }
+

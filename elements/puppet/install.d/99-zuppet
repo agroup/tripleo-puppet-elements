@@ -4,7 +4,24 @@ set -eux
 install-packages puppet git python-simplejson
 
 # Install the puppet modules
-yum install -y packstack-modules-puppet
+# NOTE(bnemec): This is a mess because the current packstack puppet module
+# is out of date/transitioning to a different package, so there are three
+# different ways to get it, only one of which works right now (of course
+# not the one we ultimately want to use).
+yum install -y wget
+
+# wget http://kojipkgs.fedoraproject.org//packages/openstack-puppet-modules/2013.2/4.fc19/noarch/openstack-puppet-modules-2013.2-4.fc19.noarch.rpm
+# yum install -y openstack-puppet-modules-2013.2-4.fc19.noarch.rpm
+# rm openstack-puppet-modules-2013.2-4.fc19.noarch.rpm
+# Dirty hack :-)
+# os-refresh-config needs to be updated to point at this location
+#ln -s /usr/share/openstack-puppet /usr/share/packstack
+
+wget http://kojipkgs.fedoraproject.org//packages/openstack-packstack/2013.2.1/0.13.dev840.fc20/noarch/packstack-modules-puppet-2013.2.1-0.13.dev840.fc20.noarch.rpm
+yum install -y packstack-modules-puppet-2013.2.1-0.13.dev840.fc20.noarch.rpm
+rm packstack-modules-puppet-2013.2.1-0.13.dev840.fc20.noarch.rpm
+
+#yum install -y packstack-modules-puppet
 
 mkdir -p /etc/puppet/manifests/
 rm -f /etc/puppet/manifests/*
