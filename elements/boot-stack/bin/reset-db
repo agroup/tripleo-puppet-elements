@@ -11,9 +11,9 @@ venvs=/opt/stack/venvs
 os-db-create keystone keystone $db_pass
 keystone-manage db_sync
 
-if [ -x "$venvs/cinder/bin/cinder-manage" ] ; then
+if [ -x "/usr/bin/cinder-manage" ] ; then
     os-db-create cinder cinder $db_pass
-    $venvs/cinder/bin/cinder-manage db sync
+    cinder-manage db sync
 fi
 
 if [ -x "$venvs/ironic/bin/ironic-dbsync" ] ; then
